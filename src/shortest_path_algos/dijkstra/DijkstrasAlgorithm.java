@@ -1,4 +1,4 @@
-package shortest_path_algos;
+package shortest_path_algos.dijkstra;
 
 import java.util.ArrayList;
 import java.util.Collections;

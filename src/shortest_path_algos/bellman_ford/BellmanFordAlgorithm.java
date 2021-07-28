@@ -1,4 +1,4 @@
-package shortest_path_algos;
+package shortest_path_algos.bellman_ford;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -106,9 +106,10 @@ public class BellmanFordAlgorithm {
         }
     }
 
-
+    /** Algorithm class */
     static class BellManFord{
 
+        /** Take lists for vertices and edges */
         private List<Edge> edgeList;
         private List<Vertex> vertices;
 
@@ -116,6 +117,7 @@ public class BellmanFordAlgorithm {
             this.edgeList = edgeList;
             this.vertices = vertices;
         }
+
 
         public void Bellman_Ford(Vertex src){
 
@@ -126,17 +128,21 @@ public class BellmanFordAlgorithm {
 
                     /**
                      *  v-1 iterations -> we relax all edges
+                     *  get the starting and ending edges
                      * */
 
                     Vertex u = edge.getStartVertex();
                     Vertex v = edge.getTargetVertex();
 
                     if(u.getDistance() == Double.MAX_VALUE){
+                        /** if no change in distance, continue the process */
                         continue;
                     }
 
+                    /** Calculate the new distance */
                     double newDistance = u.getDistance() + edge.getWeight();
 
+                    /** Update the new distance if there's a lesser distance found */
                     if(newDistance < v.getDistance()){
                         v.setDistance(newDistance);
                         v.setPrevVertex(u);
@@ -145,8 +151,11 @@ public class BellmanFordAlgorithm {
                 }
 
 
+                /** for all edges in edgelist */
                 for(Edge edge : edgeList){
+                    /** if there's a change in the distance */
                     if(edge.getStartVertex().getDistance() != Double.MAX_VALUE){
+                        /** and if there's a cycle */
                         if(hasCycle(edge)){
                             System.out.println("There has been a negative cycle detected");
                             return;
@@ -159,7 +168,7 @@ public class BellmanFordAlgorithm {
         }
 
         public boolean hasCycle(Edge edge){
-            /** check if there is a better solution */
+            /** check if there is a better solution i.e. if the start vertex distance travelled is less than target vertex distance travelled */
             return edge.getStartVertex().getDistance() + edge.getWeight() < edge.getTargetVertex().getDistance();
         }
 
@@ -192,6 +201,7 @@ public class BellmanFordAlgorithm {
         BellManFord bellManFord = new BellManFord(edgeList, vertices);
         bellManFord.Bellman_Ford(vertices.get(0));
         bellManFord.shortestPathTo(vertices.get(0));
+
     }
 
 }
