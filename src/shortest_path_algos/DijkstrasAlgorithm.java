@@ -127,7 +127,7 @@ public class DijkstrasAlgorithm {
 
         /**
          * set the distance of the src vertex to 0
-         * take a priority queue (here the compareTo func in vertex will choose the less value, creating a min priority queue)
+         * take a priority queue (here the compareTo func in vertex will choose the lesser value, creating a min priority queue)
          * add it to the src vertex
          * */
         srcVertex.setDistance(0);
