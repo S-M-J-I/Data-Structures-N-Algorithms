@@ -156,19 +156,54 @@ public class DAGShortestPath {
 
                     if(newDistance < v.getDistance()){
                         v.setDistance(newDistance);
-                        v.setPredecessor(actualVertex);
+                        v.setPredecessor(u);
                     }
                 }
 
-                /** Continue from tomorrow */
+                if(target.getDistance() == Double.MAX_VALUE){
+                    System.out.println("No shortest path here");
+                } else {
+                    System.out.println("Shortest Path: " + target.getDistance());
+                }
 
             }
+        }
+
+        public void showShortestPathTo(Vertex target){
+
+            List<Vertex> list = new ArrayList<>();
+
+            Vertex actual = target;
+            list.add(actual);
+
+            while (actual.getPredecessor() != null){
+                actual = actual.getPredecessor();
+                list.add(actual);
+            }
+
+            Collections.reverse(list);
+            System.out.println(list);
         }
     }
 
 
 
     public static void main(String[] args) {
+        Vertex v0 = new Vertex("A");
+        Vertex v1 = new Vertex("B");
+        Vertex v2 = new Vertex("C");
+
+        List<Vertex> vertexList = new ArrayList<>();
+        vertexList.add(v0);
+        vertexList.add(v1);
+        vertexList.add(v2);
+
+        v0.addEdges(new Edge(1,v0,v1), new Edge(1,v0,v2));
+        v1.addEdges(new Edge(1,v1,v2));
+
+        AcyclicShortestPath algorithm = new AcyclicShortestPath();
+        algorithm.shortestPath(vertexList, v0, v2);
+        algorithm.showShortestPathTo(v2);
 
     }
 }
