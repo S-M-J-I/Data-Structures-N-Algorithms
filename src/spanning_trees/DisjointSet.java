@@ -8,15 +8,12 @@ import java.util.List;
 
 public class DisjointSet {
 
-    private int nodeCount; /** track how many nodes do we have */
-    private int setCount; /** track how many sets do we have */
+    private int nodeCount = 0; /** track how many nodes do we have */
+    private int setCount = 0; /** track how many sets do we have */
     private List<Node> representatives;
 
     public DisjointSet(List<Vertex> vertices) {
         this.representatives = new ArrayList<>(vertices.size());
-        this.nodeCount = 0;
-        this.setCount = 0;
-
         makeSets(vertices);
     }
 
@@ -35,7 +32,7 @@ public class DisjointSet {
      * we increase the count of nodes and dj sets
      * */
     private void makeSet(Vertex v) {
-        Node node = new Node(0, representatives.size(), null);
+        Node node = new Node(nodeCount, representatives.size(), null);
         v.setNode(node);
         this.representatives.add(node);
         this.setCount++;

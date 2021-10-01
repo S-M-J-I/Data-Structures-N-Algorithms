@@ -16,8 +16,8 @@ public class Kruskals {
 
         Collections.sort(edges);
 
-        for(Edge edge : edges) {
 
+        for(Edge edge : edges) {
             Vertex u = edge.getStartVertex();
             Vertex v = edge.getTargetVertex();
 
@@ -27,9 +27,8 @@ public class Kruskals {
             }
         }
 
-
         for(Edge edge : MST) {
-            System.out.println(edge.getStartVertex()+" "+edge.getTargetVertex()+" -- ");
+            System.out.print(edge.getStartVertex()+" "+edge.getTargetVertex()+" -- ");
         }
 
     }
