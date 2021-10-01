@@ -9,6 +9,8 @@ import java.util.PriorityQueue;
 
 public class Kruskals {
 
+    private double fullCost = 0;
+
     public void run(List<Vertex> vertices, List<Edge> edges) {
 
         DisjointSet disjointSet = new DisjointSet(vertices);
@@ -23,13 +25,17 @@ public class Kruskals {
 
             if( disjointSet.FIND(u.getNode()) != disjointSet.FIND(v.getNode()) ) {
                 MST.add(edge);
+                fullCost += edge.getWeight();
                 disjointSet.UNION(u.getNode(), v.getNode());
             }
         }
 
         for(Edge edge : MST) {
-            System.out.print(edge.getStartVertex()+" "+edge.getTargetVertex()+" -- ");
+            System.out.println(edge.getStartVertex()+"--"+edge.getTargetVertex());
         }
+        System.out.println();
+
+        System.out.println("Minimum Cost : " + fullCost);
 
     }
 }
