@@ -1,4 +1,4 @@
-package spanning_trees;
+package spanning_trees.kruskals;
 
 import spanning_trees.kruskals.Node;
 import spanning_trees.kruskals.Vertex;

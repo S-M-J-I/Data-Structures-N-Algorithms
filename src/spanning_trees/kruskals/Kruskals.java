@@ -1,11 +1,8 @@
 package spanning_trees.kruskals;
 
-import spanning_trees.DisjointSet;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.PriorityQueue;
 
 public class Kruskals {
 
