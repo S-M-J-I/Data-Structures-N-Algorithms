@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class Vertex {
+
     private String name;
     private List<Vertex> neighbourList;
     private Vertex predecessor;
@@ -58,5 +59,10 @@ public class Vertex {
 
     public void setLowLink(int lowLink) {
         this.lowLink = lowLink;
+    }
+
+    @Override
+    public String toString() {
+        return this.name;
     }
 }
